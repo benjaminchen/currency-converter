@@ -1,0 +1,36 @@
+body {
+    padding-top: 88px;
+    background-color: #f5f5f5 !important;
+}
+
+.md-toolbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.toolbar-btn {
+    justify-content: space-around;
+}
+
+.caculator {
+    margin: 45px 5px 0 5px;
+
+    .md-card-media {
+        margin: 10px;
+    }
+
+    .md-card-media .md-layout {
+        justify-content: center;
+    }
+
+    .flag-dollar {
+        font-size: 26px;
+        line-height: 50px;
+    }
+
+    .dollar-info {
+        font-size: 12px;
+        color: slategray;
+    }
+}
