@@ -1,43 +1,49 @@
 <template>
     <md-card class="caculator">
         <md-card-media>
-            <md-layout>
-                <md-layout md-flex="40">
-                    <md-layout md-flex="100" class="flag-dollar">
-                        <md-icon class="md-size-2x md-primary" md-src="assets/images/icons/tw.svg"></md-icon>
-                        <span>{{ fromDollar }}</span>
+            <form novalidate @submit.stop.prevent="submit">
+                <md-layout md-flex="100">
+                    <md-layout md-flex="15">
+                        <md-button class="md-icon-button exchange-btn" @click="swap">
+                            <md-icon class="md-primary" md-src="assets/images/icons/exchange.svg"></md-icon>
+                        </md-button>
                     </md-layout>
-                    <md-layout md-flex="100" class="dollar-info">
-                        <span>{{ `1 ${fromDollar} = ${exchangeRate} ${toDollar}` }}</span>
+                    <md-layout md-flex="85">
+                        <md-layout md-flex="100">
+                            <md-layout md-flex="30">
+                                <md-layout md-flex="100" class="flag-dollar">
+                                    <md-icon class="md-size-2x md-primary" v-bind:md-src="getFlag(fromDollar)"></md-icon>
+                                </md-layout>
+                                <md-layout md-flex="100" class="dollar-info">
+                                    <span>{{ `1 : ` + exchangeRate.toFixed(2) }}</span>
+                                </md-layout>
+                            </md-layout>
+                            <md-layout md-flex="70">
+                                <md-input-container class="md-has-value">
+                                    <label>{{ fromDollar }}</label>
+                                    <md-input placeholder="0" v-model="inputDollars"></md-input>
+                                </md-input-container>
+                            </md-layout>
+                        </md-layout>
+                        <md-layout md-flex="100" class="margin-top-20">
+                            <md-layout md-flex="30">
+                                <md-layout md-flex="100" class="flag-dollar">
+                                    <md-icon class="md-size-2x md-primary" v-bind:md-src="getFlag(toDollar)"></md-icon>
+                                </md-layout>
+                                <md-layout md-flex="100" class="dollar-info">
+                                    <span>{{ `1 : ` + (1/exchangeRate).toFixed(2) }}</span>
+                                </md-layout>
+                            </md-layout>
+                            <md-layout md-flex="70">
+                                <md-input-container class="md-has-value">
+                                    <label>{{ toDollar }}</label>
+                                    <md-input v-bind:value="caculate()" disabled></md-input>
+                                </md-input-container>
+                            </md-layout>
+                        </md-layout>
                     </md-layout>
                 </md-layout>
-                <md-layout md-flex="20">
-                    <md-icon class="md-size-2x md-primary" md-src="assets/images/icons/right-arrow-in-a-circle.svg"></md-icon>
-                </md-layout>
-                <md-layout  md-flex="40">
-                    <md-layout md-flex="100" class="flag-dollar">
-                        <span>{{ toDollar }}</span>
-                        <md-icon class="md-size-2x md-primary" md-src="assets/images/icons/us.svg"></md-icon>
-                    </md-layout>
-                    <md-layout md-flex="100" class="dollar-info">
-                        <span>{{ `1 ${toDollar} = ` + (1/exchangeRate).toFixed(4) + ` ${fromDollar}` }}</span>
-                    </md-layout>
-                </md-layout>
-            </md-layout>
-            <md-layout>
-                <form novalidate @submit.stop.prevent="submit">
-                    <md-input-container class="md-has-value">
-                        <label>輸入面額</label>
-                        <md-input placeholder="0" v-model="inputDollars"></md-input>
-                        <span>{{ fromDollar }}</span>
-                    </md-input-container>
-                    <md-input-container class="md-has-value">
-                        <label>轉換面額</label>
-                        <md-input v-bind:value="caculate()" disabled></md-input>
-                        <span>{{ toDollar }}</span>
-                    </md-input-container>
-                </form>
-            </md-layout>
+            </form>
         </md-card-media>
     </md-card>
 </template>
@@ -53,8 +59,17 @@
             }
         },
         methods: {
+            getFlag(dollar) {
+                return `assets/images/icons/${dollar}.svg`
+            },
             caculate() {
                 return (this.inputDollars * this.exchangeRate).toFixed(4)
+            },
+            swap() {
+                let fromDollar = this.fromDollar
+                this.fromDollar = this.toDollar
+                this.toDollar = fromDollar
+                this.exchangeRate = (1/this.exchangeRate)
             }
         }
     }
