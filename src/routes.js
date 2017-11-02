@@ -4,7 +4,7 @@ import main from './vue/main.vue'
 var router = new VueRouter({
     routes: [
         {
-            path: '/', component: main
+            path: '/', component: main, props: true
         }
     ]
 });

@@ -11,6 +11,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 9999;
 }
 
 .toolbar-btn {
@@ -63,5 +64,16 @@ body {
         display: inline-flex;
         vertical-align: middle;
         margin: auto;
+    }
+}
+
+.line-chart, .news {
+    margin: 5px 5px 0 5px;
+}
+
+.news {
+    span {
+        padding: 10px 0;
+        border-bottom: 1px solid #bbbbbb
     }
 }
