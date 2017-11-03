@@ -8,6 +8,11 @@
                 :height="height"
             ></line-chart>
         </md-card-media>
+        <md-card-actions>
+            <md-button default>今日</md-button>
+            <md-button>本週</md-button>
+            <md-button>本月</md-button>
+        </md-card-actions>
     </md-card>
 </template>
 

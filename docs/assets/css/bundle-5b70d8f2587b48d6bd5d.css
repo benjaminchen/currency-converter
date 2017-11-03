@@ -6054,7 +6054,7 @@ to {
 .md-whiteframe-24dp {
   box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
 }body {
-  padding-top: 88px;
+  padding-top: 100px;
   background-color: #f5f5f5 !important; }
 
 .margin-top-20 {
@@ -6065,12 +6065,19 @@ to {
   top: 0;
   width: 100%;
   z-index: 9999; }
+  .md-toolbar .md-toolbar-container {
+    height: 50px; }
 
 .toolbar-btn {
   justify-content: space-around; }
 
+.add-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px; }
+
 .caculator {
-  margin: 45px 5px 0 5px; }
+  margin: 5px 5px 0 5px; }
   .caculator form {
     width: 100%; }
   .caculator .md-card-media {

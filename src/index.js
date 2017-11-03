@@ -6,6 +6,7 @@ import router from './routes'
 import './scss/main.scss'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import toolbar from './vue/components/toolbar.vue'
 
 Vue.config.devtools = false;
 Vue.config.productionTip = false;
@@ -19,6 +20,9 @@ Vue.material.registerTheme('default', {
 
 const App = new Vue({
     el: 'div.app',
+    components: {
+      toolbar,
+    },
     data: function() {
       return {
         source: 'business-insider',

@@ -1,0 +1,59 @@
+.caculator {
+    margin: 5px 5px 0 5px;
+
+    form {
+        width: 100%
+    }
+
+    .md-card-media {
+        margin: 10px;
+    }
+
+    .md-card-media .md-layout {
+        justify-content: center;
+    }
+
+    .flag-dollar {
+        font-size: 26px;
+        line-height: 50px;
+    }
+
+    .dollar-info {
+        font-size: 12px;
+        color: slategray;
+    }
+
+    .md-input-container {
+        margin: 2px 0 5px 0;
+
+        input, ::-webkit-input-placeholder {
+            padding-top: 16px;
+            font-size: 24px;
+        }
+
+        input, label, ::-webkit-input-placeholder {
+            color: rgba(0, 0, 0, .38);
+        }
+    }
+
+    .md-theme-default.md-input-container.md-input-disabled input {
+        color: #FB8C00;
+    }
+
+    .exchange-btn {
+        display: inline-flex;
+        vertical-align: middle;
+        margin: auto;
+    }
+}
+
+.line-chart, .news {
+    margin: 5px 5px 0 5px;
+}
+
+.news {
+    span {
+        padding: 10px 0;
+        border-bottom: 1px solid #bbbbbb
+    }
+}
