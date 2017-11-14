@@ -3,3 +3,38 @@
     bottom: 10px;
     right: 10px;
 }
+
+$swift-ease-out-duration: .4s !default;
+$swift-ease-out-timing-function: cubic-bezier(.25, .8, .25, 1) !default;
+$swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !default;
+
+.spending-card .md-card {
+    &.detail-active {
+        .detail-btn {
+            transform: rotateZ(180deg) translate3D(0, 0, 0);
+        }
+
+        .md-card-content {
+            margin-top: 0 !important;
+            opacity: 1;
+            padding: 4px 16px 24px 16px ;
+            height: auto;
+        }
+    }
+
+    .detail-btn {
+        transition: $swift-ease-out;
+        will-change: transform;
+    }
+
+    .md-card-content {
+      height: 0;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translate3D(0, 0, 0);
+      transition: $swift-ease-out;
+      will-change: margin, height;
+    }
+}

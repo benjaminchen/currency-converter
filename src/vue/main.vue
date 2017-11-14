@@ -1,29 +1,6 @@
 <template>
     <div>
-        <md-card>
-            <md-card-header>
-                <md-card-header-text>
-                    <div class="md-title">2017/10/20 日本--範例</div>
-                </md-card-header-text>
-                <md-menu md-size="4" md-direction="bottom left">
-                    <md-button class="md-icon-button" md-menu-trigger>
-                        <md-icon>more_vert</md-icon>
-                    </md-button>
-
-                    <md-menu-content>
-                        <md-menu-item>
-                            <span>Call</span>
-                            <md-icon>phone</md-icon>
-                        </md-menu-item>
-
-                        <md-menu-item>
-                            <span>Send a message</span>
-                            <md-icon>message</md-icon>
-                        </md-menu-item>
-                    </md-menu-content>
-                </md-menu>
-            </md-card-header>
-        </md-card>
+        <card v-for="(row, index) in rows" :date="row.date" :title="row.title" :expenses="row.expenses"></card>
         <md-button class="md-icon-button md-raised md-accent add-btn">
             <md-icon>add</md-icon>
         </md-button>
@@ -31,13 +8,34 @@
 </template>
 
 <script>
+    import card from './components/spendingCard.vue'
+
     export default {
         components: {
+            card
         },
         data: function() {
-            return {}
+            return {
+                rows: [
+                    {
+                        date: "2017/10/20",
+                        title: "日本-範例",
+                        expenses: [
+                            {
+                                title: "買麵包",
+                                currency: "JPY",
+                                money: "27988"
+                            }
+                        ]
+                    }
+                ]
+            }
         },
         methods: {
+            toggleDetail() {
+                let btn = this.$el.querySelector('.detail-btn')
+                btn.classList.toggle('active')
+            }
         }
     }
 </script>

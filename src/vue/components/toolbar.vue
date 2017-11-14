@@ -23,7 +23,6 @@
 <script>
     export default {
         data: function() {
-            console.log(this.$router)
             return {}
         },
         methods: {
