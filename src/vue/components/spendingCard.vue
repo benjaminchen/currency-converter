@@ -28,7 +28,22 @@
             </md-card-header>
             <md-card-content>
                 <md-list>
-                    <md-list-item v-for="(expense, index) in expenses" class="md-inset">{{ `${expense.title} ${expense.currency} ${expense.money}` }}</md-list-item>
+                    <md-list-item v-for="(expense, index) in expenses" class="md-inset" key="index">
+                        <md-layout md-flex="55">{{ expense.title}}</md-layout>
+                        <md-layout md-flex="15">{{ expense.currency }}</md-layout>
+                        <md-layout md-flex="20">{{ expense.money }}</md-layout>
+                        <md-layout md-flex="10">
+                            <md-button class="md-icon-button" md-menu-trigger>
+                                <md-icon>edit</md-icon>
+                            </md-button>
+                        </md-layout>
+                    </md-list-item>
+                    <md-list-item class="md-inset">
+                        <md-layout md-flex="55">總花費</md-layout>
+                        <md-layout md-flex="15">{{ currency }}</md-layout>
+                        <md-layout md-flex="20">{{ sum }}</md-layout>
+                        <md-layout md-flex="10"></md-layout>
+                    </md-list-item>
                 </md-list>
             </md-card-content>
         </md-card>
@@ -43,12 +58,23 @@
         props: [
             'date',
             'title',
-            'expenses'
+            'expenses',
+            'currency'
         ],
         methods: {
             toggle() {
                 let card = this.$el.querySelector('.md-card')
                 card.classList.toggle('detail-active')
+            }
+        },
+        computed: {
+            sum() {
+                return this.expenses.reduce((total, expense) => {
+                    var rate = 0.2691
+                    var m = parseFloat(expense.money)
+                    var money = this.currency === expense.currency ? (total + m) : (total + m * rate)
+                    return money.toFixed(2)
+                }, 0)
             }
         }
     }

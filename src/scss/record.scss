@@ -9,6 +9,10 @@ $swift-ease-out-timing-function: cubic-bezier(.25, .8, .25, 1) !default;
 $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !default;
 
 .spending-card .md-card {
+    .md-list-item.md-inset .md-list-item-container {
+        padding-left: 0;
+    }
+
     &.detail-active {
         .detail-btn {
             transform: rotateZ(180deg) translate3D(0, 0, 0);

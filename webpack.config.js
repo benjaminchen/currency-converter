@@ -8,6 +8,7 @@ const webpack = require('webpack')
 
 var isProduction = (process.env.NODE_ENV === 'production')
 var isDevServer = false
+var distPath = isProduction ? "docs" : "dist"
 
 process.argv.forEach(function(arg) {
   if (arg.indexOf("webpack-dev-server") !== -1) {
@@ -33,7 +34,7 @@ const getPlugins = function() {
     ]),
   ]
 
-  ! isDevServer && plugins.push(new CleanWebpackPlugin(['dist']))
+  ! isDevServer && plugins.push(new CleanWebpackPlugin([distPath]))
   isProduction && plugins.push(new UglifyJSPlugin())
 
   return plugins
@@ -56,7 +57,7 @@ module.exports = {
   plugins: getPlugins(),
   output: {
     filename: isProduction ? 'assets/js/bundle-[chunkhash].min.js' : 'assets/js/bundle-[chunkhash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, distPath)
   },
   module: {
     rules: [

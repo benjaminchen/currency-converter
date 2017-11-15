@@ -1,6 +1,6 @@
 <template>
     <div>
-        <card v-for="(row, index) in rows" :date="row.date" :title="row.title" :expenses="row.expenses"></card>
+        <card v-for="(row, index) in rows" :date="row.date" :title="row.title" :expenses="row.expenses" :currency="currency" key="index"></card>
         <md-button class="md-icon-button md-raised md-accent add-btn">
             <md-icon>add</md-icon>
         </md-button>
@@ -11,6 +11,9 @@
     import card from './components/spendingCard.vue'
 
     export default {
+        props: [
+            'currency'
+        ],
         components: {
             card
         },
@@ -22,7 +25,7 @@
                         title: "日本-範例",
                         expenses: [
                             {
-                                title: "買麵包",
+                                title: "機票",
                                 currency: "JPY",
                                 money: "27988"
                             }

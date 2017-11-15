@@ -25,6 +25,7 @@ const App = new Vue({
     },
     data: function() {
       return {
+        currency: 'NTD',
         source: 'business-insider',
         news: []
       }
