@@ -10,21 +10,6 @@
                         </md-button>
                     </md-layout>
                 </md-card-header-text>
-                <md-menu md-size="4" md-direction="bottom left">
-                    <md-button class="md-icon-button" md-menu-trigger>
-                        <md-icon>more_vert</md-icon>
-                    </md-button>
-                    <md-menu-content>
-                        <md-menu-item>
-                            <span>Add Spending</span>
-                            <md-icon>playlist_add</md-icon>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <span>Edit</span>
-                            <md-icon>settings</md-icon>
-                        </md-menu-item>
-                    </md-menu-content>
-                </md-menu>
             </md-card-header>
             <md-card-content>
                 <md-list>
@@ -33,7 +18,7 @@
                         <md-layout md-flex="15">{{ expense.currency }}</md-layout>
                         <md-layout md-flex="20">{{ expense.money }}</md-layout>
                         <md-layout md-flex="10">
-                            <md-button class="md-icon-button" md-menu-trigger>
+                            <md-button class="md-icon-button" @click="openDialog('edit-dialog', expense)">
                                 <md-icon>edit</md-icon>
                             </md-button>
                         </md-layout>
@@ -45,11 +30,33 @@
                         <md-layout md-flex="10"></md-layout>
                     </md-list-item>
                 </md-list>
+                <md-dialog md-open-from="#fab" md-close-to="#fab" ref="edit-dialog">
+                    <md-dialog-title>更新支出</md-dialog-title>
+
+                    <md-dialog-content>
+                        <form>
+                            <md-input-container>
+                                <label>消費</label>
+                                <md-textarea v-model="tempExpense.title"></md-textarea>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>幣別</label>
+                                <md-textarea v-model="tempExpense.currency"></md-textarea>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>金額</label>
+                                <md-textarea v-model="tempExpense.money"></md-textarea>
+                            </md-input-container>
+                        </form>
+                    </md-dialog-content>
+
+                    <md-dialog-actions>
+                        <md-button class="md-primary" @click="closeDialog('edit-dialog')">取消</md-button>
+                        <md-button class="md-primary" @click="closeDialog('edit-dialog')">修改</md-button>
+                    </md-dialog-actions>
+                </md-dialog>
             </md-card-content>
         </md-card>
-        <md-button class="md-icon-button md-raised md-accent add-btn">
-            <md-icon>add</md-icon>
-        </md-button>
     </div>
 </template>
 
@@ -61,10 +68,30 @@
             'expenses',
             'currency'
         ],
+        data: () => ({
+                tempExpense: {
+                    title: "",
+                    currency: "",
+                    money: "",
+                },
+        }),
         methods: {
             toggle() {
                 let card = this.$el.querySelector('.md-card')
                 card.classList.toggle('detail-active')
+            },
+            openDialog(ref, expense) {
+                this.tempExpense = expense
+                this.$refs[ref].open();
+            },
+            closeDialog(ref) {
+                this.$refs[ref].close();
+            },
+            onOpen() {
+                console.log('Opened');
+            },
+            onClose(type) {
+                console.log('Closed', type);
             }
         },
         computed: {
@@ -73,7 +100,7 @@
                     var rate = 0.2691
                     var m = parseFloat(expense.money)
                     var money = this.currency === expense.currency ? (total + m) : (total + m * rate)
-                    return money.toFixed(2)
+                    return Math.round(money * 100) / 100
                 }, 0)
             }
         }

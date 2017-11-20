@@ -28,6 +28,11 @@
                                 title: "機票",
                                 currency: "JPY",
                                 money: "27988"
+                            },
+                            {
+                                title: "住宿",
+                                currency: "JPY",
+                                money: "45678"
                             }
                         ]
                     }
