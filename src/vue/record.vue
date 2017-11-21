@@ -40,10 +40,6 @@
             }
         },
         methods: {
-            toggleDetail() {
-                let btn = this.$el.querySelector('.detail-btn')
-                btn.classList.toggle('active')
-            }
         }
     }
 </script>

@@ -24,6 +24,18 @@ $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !d
             padding: 4px 16px 24px 16px ;
             height: auto;
         }
+
+        .add-record-btn {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    .add-record-btn {
+        min-width: 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.5s, opacity 0.5s linear;
     }
 
     .detail-btn {
