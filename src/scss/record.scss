@@ -1,4 +1,4 @@
-.add-btn {
+.add-row-btn {
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -25,13 +25,13 @@ $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !d
             height: auto;
         }
 
-        .add-record-btn {
+        .add-expense-btn {
             visibility: visible;
             opacity: 1;
         }
     }
 
-    .add-record-btn {
+    .add-expense-btn {
         min-width: 0;
         visibility: hidden;
         opacity: 0;
@@ -52,5 +52,10 @@ $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !d
       transform: translate3D(0, 0, 0);
       transition: $swift-ease-out;
       will-change: margin, height;
+
+      .md-list-item .md-layout span {
+          width: 80%;
+          word-break: break-word;
+      }
     }
 }
