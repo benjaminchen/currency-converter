@@ -31,6 +31,10 @@
     import card from './components/spendingCard.vue'
 
     export default {
+        created: function() {
+            this.newRow = Object.assign({}, this.nullRow)
+            this.editRow = Object.assign({}, this.nullRow)
+        },
         mounted: function() {
             var rows = window.localStorage.getItem("TravelToolRows");
             if (rows) this.rows = JSON.parse(rows)
@@ -43,17 +47,14 @@
         },
         data: function() {
             return {
-                newRow: {
+                nullRow: {
                     date: "",
                     title: "",
                     expenses: []
                 },
+                newRow: null,
                 editIndex: null,
-                editRow: {
-                    date: "",
-                    title: "",
-                    expenses: []
-                },
+                editRow: null,
                 rows: [
                     {
                         date: "2017-10-20",
@@ -86,11 +87,7 @@
                 this.$refs[ref].close()
             },
             editOrAdd(ref, index = null) {
-                var nullRow = {
-                    date: "",
-                    title: "",
-                    expenses: []
-                }
+                var nullRow = Object.assign({}, this.nullRow)
                 index ? this.editRow = nullRow : this.rows.push(this.newRow)
                 this.newRow = nullRow
                 this.closeDialog(ref)

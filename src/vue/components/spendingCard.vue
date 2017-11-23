@@ -87,8 +87,10 @@
                                 <md-textarea v-model="newExpense.title"></md-textarea>
                             </md-input-container>
                             <md-input-container>
-                                <label>幣別</label>
-                                <md-textarea v-model="newExpense.currency"></md-textarea>
+                                <select v-model="newExpense.currency">
+                                    <option value="" disabled selected>幣別</option>
+                                    <option v-for="(currency, index) in currencies" value="currency">{{ currency }}</option>
+                                </select>
                             </md-input-container>
                             <md-input-container>
                                 <label>金額</label>
@@ -113,8 +115,9 @@
                                 <md-textarea v-model="editExpense.title"></md-textarea>
                             </md-input-container>
                             <md-input-container>
-                                <label>幣別</label>
-                                <md-textarea v-model="editExpense.currency"></md-textarea>
+                                <select v-model="editExpense.currency">
+                                    <option v-for="(currency, index) in currencies" :value="currency">{{ currency }}</option>
+                                </select>
                             </md-input-container>
                             <md-input-container>
                                 <label>金額</label>
@@ -135,6 +138,10 @@
 
 <script>
     export default {
+        created: function() {
+            this.editExpense = Object.assign({}, this.nullExpense)
+            this.newExpense = Object.assign({}, this.nullExpense)
+        },
         props: [
             'date',
             'title',
@@ -144,17 +151,18 @@
             'saveRows'
         ],
         data: () => ({
+                currencies: [
+                    'NTD',
+                    'JPY'
+                ],
                 editIndex: null,
-                editExpense: {
+                nullExpense: {
                     title: "",
                     currency: "",
                     money: "",
                 },
-                newExpense: {
-                    title: "",
-                    currency: "",
-                    money: "",
-                },
+                editExpense: null,
+                newExpense: null,
         }),
         methods: {
             toggle() {
@@ -170,13 +178,10 @@
             },
             closeDialog(ref) {
                 this.$refs[ref].close()
+                this.newExpense = Object.assign({}, this.nullExpense)
             },
             editOrAdd(ref, index = null) {
-                var nullExpense = {
-                    title: "",
-                    currency: "",
-                    money: "",
-                }
+                var nullExpense = Object.assign({}, this.nullExpense)
                 index ? this.editExpense = nullExpense : this.expenses.push(this.newExpense)
                 this.newExpense = nullExpense
                 this.closeDialog(ref)

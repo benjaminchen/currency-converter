@@ -43,6 +43,10 @@ $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !d
         will-change: transform;
     }
 
+    .md-card-header .md-title {
+        font-size: 20px;
+    }
+
     .md-card-content {
       height: 0;
       padding: 0 16px;
@@ -61,7 +65,7 @@ $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !d
 }
 
 .md-dialog-container {
-    z-index: 99999;
+    z-index: 10000;
 
     .md-dialog {
         overflow-y: auto;
