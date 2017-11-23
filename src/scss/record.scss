@@ -63,11 +63,3 @@ $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !d
       }
     } 
 }
-
-.md-dialog-container {
-    z-index: 10000;
-
-    .md-dialog {
-        overflow-y: auto;
-    }
-}

@@ -7,11 +7,11 @@ body {
     margin-top: 20px;
 }
 
-.md-toolbar {
+.header-toolbar.md-toolbar {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 9999;
+    z-index: 2;
 
     .md-toolbar-container {
         height: 50px;
@@ -20,4 +20,14 @@ body {
 
 .toolbar-btn {
     justify-content: space-around;
+}
+
+.md-dialog-container {
+    .md-dialog {
+        overflow-y: auto;
+    }
+}
+
+.setting {
+    padding: 5% 10%;
 }

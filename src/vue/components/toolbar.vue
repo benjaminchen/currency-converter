@@ -1,7 +1,7 @@
 <template>
-    <md-toolbar>
+    <md-toolbar class="header-toolbar">
         <div class="md-toolbar-container">
-            <md-button class="md-icon-button">
+            <md-button class="md-icon-button" @click="toggleLeftSidenav">
                 <md-icon>menu</md-icon>
             </md-button>
             <h2 class="md-title" style="flex: 1;">{{ $route.name }}</h2>
@@ -28,6 +28,9 @@
         methods: {
             tabClick(url) {
                 this.$router.push(url)
+            },
+            toggleLeftSidenav() {
+                this.$root.$refs.leftSideBar.$refs.leftSidenav.toggle()
             }
         }
     }

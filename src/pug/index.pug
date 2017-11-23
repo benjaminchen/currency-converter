@@ -4,5 +4,6 @@ html
     body
         .app(class="flex-center full-height")
             .container
+                left-side-bar(ref="leftSideBar")
                 toolbar
                 router-view(:news="news", :currency="currency")

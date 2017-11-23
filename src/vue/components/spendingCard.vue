@@ -89,7 +89,7 @@
                             <md-input-container>
                                 <select v-model="newExpense.currency">
                                     <option value="" disabled selected>幣別</option>
-                                    <option v-for="(currency, index) in currencies" value="currency">{{ currency }}</option>
+                                    <option v-for="(currency, index) in currencies" :value="currency">{{ currency }}</option>
                                 </select>
                             </md-input-container>
                             <md-input-container>

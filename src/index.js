@@ -7,6 +7,7 @@ import './scss/main.scss'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import toolbar from './vue/components/toolbar.vue'
+import leftSideBar from './vue/components/leftSideBar.vue'
 
 Vue.config.devtools = false;
 Vue.config.productionTip = false;
@@ -22,6 +23,7 @@ const App = new Vue({
     el: 'div.app',
     components: {
       toolbar,
+      leftSideBar
     },
     data: function() {
       return {
