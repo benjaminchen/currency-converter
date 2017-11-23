@@ -57,5 +57,13 @@ $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !d
           width: 80%;
           word-break: break-word;
       }
+    } 
+}
+
+.md-dialog-container {
+    z-index: 99999;
+
+    .md-dialog {
+        overflow-y: auto;
     }
 }
