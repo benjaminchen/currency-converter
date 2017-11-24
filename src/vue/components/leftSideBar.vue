@@ -25,12 +25,20 @@
 
 <script>
     export default {
+        mounted: function() {
+            this.currency = this.$store.state.settings.currency
+        },
         data: () => ({
                 currencies: [
                     'NTD',
                     'JPY'
                 ],
-                currency: 'NTD'
+                currency: ""
         }),
+        watch: {
+            'currency'(currency) {
+                this.$store.dispatch("settings/setCurrency", currency)
+            }
+        }
     }
 </script>

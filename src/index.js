@@ -8,6 +8,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import toolbar from './vue/components/toolbar.vue'
 import leftSideBar from './vue/components/leftSideBar.vue'
+import store from './store'
 
 Vue.config.devtools = false;
 Vue.config.productionTip = false;
@@ -20,6 +21,9 @@ Vue.material.registerTheme('default', {
 })
 
 const App = new Vue({
+    beforeMount: function() {
+      this.$store.commit("settings/init")
+    },
     el: 'div.app',
     components: {
       toolbar,
@@ -27,11 +31,11 @@ const App = new Vue({
     },
     data: function() {
       return {
-        currency: 'NTD',
         source: 'business-insider',
         news: []
       }
     },
+    store,
     router,
 });
 

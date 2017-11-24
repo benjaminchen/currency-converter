@@ -1,6 +1,6 @@
 <template>
     <div>
-        <card v-for="(row, index) in rows" :date="row.date" :title="row.title" :expenses="row.expenses" :currency="currency" :deleteRow="deleteRow" :saveRows="saveRows" key="index"></card>
+        <card v-for="(row, index) in rows" :date="row.date" :title="row.title" :expenses="row.expenses" :deleteRow="deleteRow" :saveRows="saveRows" key="index"></card>
         <md-dialog md-open-from="#fab" md-close-to="#fab" ref="add-dialog">
             <md-dialog-title>新增旅程紀錄</md-dialog-title>
 
@@ -36,12 +36,9 @@
             this.editRow = Object.assign({}, this.nullRow)
         },
         mounted: function() {
-            var rows = window.localStorage.getItem("TravelToolRows");
+            var rows = window.localStorage.getItem("TravelToolRows")
             if (rows) this.rows = JSON.parse(rows)
         },
-        props: [
-            'currency'
-        ],
         components: {
             card
         },

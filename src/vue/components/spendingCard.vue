@@ -47,7 +47,7 @@
                     </md-list-item>
                     <md-list-item class="md-inset">
                         <md-layout md-flex="50">總花費</md-layout>
-                        <md-layout md-flex="15">{{ currency }}</md-layout>
+                        <md-layout md-flex="15">{{ $store.state.settings.currency }}</md-layout>
                         <md-layout md-flex="20">{{ sum }}</md-layout>
                         <md-layout md-flex="15">
                             <md-button class="md-icon-button" @click="openDialog('add-dialog')">
@@ -146,7 +146,6 @@
             'date',
             'title',
             'expenses',
-            'currency',
             'deleteRow',
             'saveRows'
         ],
@@ -195,7 +194,7 @@
                 return this.expenses.reduce((total, expense) => {
                     var rate = 0.2691
                     var m = parseFloat(expense.money)
-                    var money = this.currency === expense.currency ? (total + m) : (total + m * rate)
+                    var money = this.$store.state.settings.currency === expense.currency ? (total + m) : (total + m * rate)
                     return Math.round(money * 100) / 100
                 }, 0)
             }
