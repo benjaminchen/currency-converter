@@ -1,0 +1,50 @@
+const currencies = {
+    namespaced: true,
+    state: {
+        date: "2017/11/27 09:34",
+        lists: [
+            "NTD",
+            "USD",
+            "HKD",
+            "GBP",
+            "AUD",
+            "CAD",
+            "SGD",
+            "CHF",
+            "JPY",
+            "SEK",
+            "NZD",
+            "THB",
+            "PHP",
+            "IDR",
+            "EUR",
+            "KRW",
+            "VND",
+            "MYR",
+            "CNY",
+        ],
+        NTD: 1,
+        USD: 30.187,
+        HKD: 3.886,
+        GBP: 40.81,
+        AUD: 23.14,
+        CAD: 23.95,
+        SGD: 22.54,
+        CHF: 30.97,
+        JPY: 0.2717,
+        SEK: 3.74,
+        NZD: 20.87,
+        THB: 0.957,
+        PHP: 0.6752,
+        IDR: 0.00258,
+        EUR: 36.2,
+        KRW: 0.02974,
+        VND: 0.00145,
+        MYR: 7.795,
+        CNY: 4.61
+    },
+    mutations: {
+    }
+}
+
+export default currencies

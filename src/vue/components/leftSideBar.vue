@@ -27,14 +27,14 @@
     export default {
         mounted: function() {
             this.currency = this.$store.state.settings.currency
+            this.currencies = this.$store.state.currencies.lists
         },
-        data: () => ({
-                currencies: [
-                    'NTD',
-                    'JPY'
-                ],
+        data: () => {
+            return {
+                currencies: [],
                 currency: ""
-        }),
+            }
+        },
         watch: {
             'currency'(currency) {
                 this.$store.dispatch("settings/setCurrency", currency)

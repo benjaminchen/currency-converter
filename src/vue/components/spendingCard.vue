@@ -142,6 +142,9 @@
             this.editExpense = Object.assign({}, this.nullExpense)
             this.newExpense = Object.assign({}, this.nullExpense)
         },
+        mounted: function() {
+            this.currencies = this.$store.state.currencies
+        },
         props: [
             'date',
             'title',
@@ -150,10 +153,7 @@
             'saveRows'
         ],
         data: () => ({
-                currencies: [
-                    'NTD',
-                    'JPY'
-                ],
+                currencies: [],
                 editIndex: null,
                 nullExpense: {
                     title: "",
@@ -192,9 +192,10 @@
         computed: {
             sum() {
                 return this.expenses.reduce((total, expense) => {
-                    var rate = 0.2691
-                    var m = parseFloat(expense.money)
-                    var money = this.$store.state.settings.currency === expense.currency ? (total + m) : (total + m * rate)
+                    let currency = this.$store.state.settings.currency
+                    let rate = this.currencies[expense.currency] / this.currencies[currency]
+                    let m = parseFloat(expense.money)
+                    let money = currency === expense.currency ? (total + m) : (total + m * rate)
                     return Math.round(money * 100) / 100
                 }, 0)
             }
