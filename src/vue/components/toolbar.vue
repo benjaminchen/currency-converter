@@ -13,9 +13,6 @@
             <md-button class="md-icon-button" @click="tabClick('/exchange')">
                 <md-icon class="md-primary" md-src="assets/images/icons/exchange_2.svg"></md-icon>
             </md-button>
-            <md-button class="md-icon-button" @click="tabClick('貨幣換算名單')">
-                <md-icon>format_list_numbered</md-icon>
-            </md-button>
         </div>
     </md-toolbar>
 </template>
