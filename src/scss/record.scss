@@ -56,6 +56,7 @@ $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !d
       transform: translate3D(0, 0, 0);
       transition: $swift-ease-out;
       will-change: margin, height;
+      overflow: hidden;
 
       .md-list-item .md-layout span {
           width: 80%;

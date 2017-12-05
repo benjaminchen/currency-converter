@@ -16,6 +16,12 @@
     .flag-dollar {
         font-size: 26px;
         line-height: 50px;
+
+        .md-button.md-icon-button {
+            border-radius: 0;
+            width: 48px;
+            height: 48px;
+        }
     }
 
     .dollar-info {
@@ -47,13 +53,16 @@
     }
 }
 
-.line-chart, .news {
-    margin: 5px 5px 0 5px;
+.md-dialog .flag-list {
+    .md-button.md-icon-button {
+        border-radius: 0;
+        width: 48px;
+        height: 48px;
+        margin: 0;
+        padding: 0;
+    }
 }
 
-.news {
-    span {
-        padding: 10px 0;
-        border-bottom: 1px solid #bbbbbb
-    }
+.line-chart {
+    margin: 5px 5px 0 5px;
 }
