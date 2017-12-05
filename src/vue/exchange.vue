@@ -7,23 +7,19 @@
             :width="0"
             :height="200"
         ></line-chart>
-        <news :news="news"></news>
     </div>
 </template>
 
 <script>
     import calculator from './components/calculator.vue'
     import lineChart from './components/lineChart.vue'
-    import news from './components/news.vue'
 
     export default {
         components: {
             toolbar,
             calculator,
             lineChart,
-            news,
         },
-        props: ['news'],
         data: function() {
             return {
                 options: {
