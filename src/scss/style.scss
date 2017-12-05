@@ -20,6 +20,22 @@ body {
 
 .toolbar-btn {
     justify-content: space-around;
+
+    .md-button {
+        width: 100%;
+    }
+
+    .active {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .md-icon:nth-child(1) {
+        padding-right: 5px;
+    }
+}
+
+.md-toolbar .md-button:hover:not([disabled]):not(.md-raised):not(.md-icon-button):not(.md-fab) {
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .md-dialog-container {
