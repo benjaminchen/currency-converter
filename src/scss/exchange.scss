@@ -63,6 +63,14 @@
     }
 }
 
-.line-chart {
-    margin: 5px 5px 0 5px;
+.keyboard {
+    margin: 5px;
+
+    .md-button {
+        background-color: white;
+        font-size: 18px;
+        height: 40px;
+        width: 100%;
+        margin: 3px;
+    }
 }

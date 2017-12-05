@@ -23,7 +23,7 @@
                             <md-layout md-flex="70">
                                 <md-input-container class="md-has-value">
                                     <label>{{ fromDollar }}</label>
-                                    <md-input placeholder="0" v-model="inputDollars"></md-input>
+                                    <md-input placeholder="0" v-model="input" readonly></md-input>
                                 </md-input-container>
                             </md-layout>
                         </md-layout>
@@ -69,13 +69,15 @@
         mounted: function() {
             this.currencies = this.$store.state.currencies
         },
+        props: [
+            'input'
+        ],
         data: function() {
             return {
                 currencies: [],
                 fromDollar: "NTD",
                 toDollar: "USD",
                 exchangeRate: 0.033,
-                inputDollars: null,
                 setTarget: null
             }
         },
@@ -84,7 +86,7 @@
                 return `assets/images/icons/${dollar}.svg`
             },
             caculate() {
-                return (this.inputDollars * this.exchangeRate).toFixed(4)
+                return (this.input * this.exchangeRate).toFixed(4)
             },
             swap() {
                 let fromDollar = this.fromDollar
