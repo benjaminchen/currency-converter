@@ -8,7 +8,7 @@
         </div>
         <div class="md-toolbar-container toolbar-btn">
             <md-button class="md-icon-button" @click="tabClick('/')">
-                <md-icon class="md-primary" md-src="assets/images/icons/cash.svg"></md-icon>
+                <md-icon class="md-primary" md-src="assets/images/icons/wallet.svg"></md-icon>
             </md-button>
             <md-button class="md-icon-button" @click="tabClick('/exchange')">
                 <md-icon class="md-primary" md-src="assets/images/icons/exchange_2.svg"></md-icon>
