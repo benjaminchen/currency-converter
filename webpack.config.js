@@ -5,6 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin2')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
+const ImageminPlugin = require('imagemin-webpack-plugin').default
 
 var isProduction = (process.env.NODE_ENV === 'production')
 var isDevServer = false
@@ -32,6 +33,7 @@ const getPlugins = function() {
         to: 'assets/images'
       }
     ]),
+    new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
   ]
 
   ! isDevServer && plugins.push(new CleanWebpackPlugin([distPath]))
