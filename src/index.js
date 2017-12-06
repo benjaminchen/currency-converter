@@ -7,6 +7,7 @@ import './scss/main.scss'
 import toolbar from './vue/components/toolbar.vue'
 import leftSideBar from './vue/components/leftSideBar.vue'
 import store from './store'
+import i18n from './js/i18n/index'
 
 Vue.config.devtools = false;
 Vue.config.productionTip = false;
@@ -16,6 +17,8 @@ Vue.use(VueMaterial)
 Vue.material.registerTheme('default', {
   primary: 'blue',
 })
+
+i18n.locale = store.state.settings.language
 
 const App = new Vue({
     beforeMount: function() {
@@ -28,4 +31,5 @@ const App = new Vue({
     },
     store,
     router,
+    i18n
 })

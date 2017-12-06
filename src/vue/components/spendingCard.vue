@@ -17,12 +17,12 @@
 
                     <md-menu-content>
                         <md-menu-item @click="openDialog('edit-row-dialog')">
-                        <span>修改標題</span>
+                        <span>{{ $t("record.edit_title") }}</span>
                         <md-icon>edit</md-icon>
                         </md-menu-item>
 
                         <md-menu-item @click="deleteRow">
-                        <span>刪除旅程</span>
+                        <span>{{ $t("record.delete_trip") }}</span>
                         <md-icon>delete</md-icon>
                         </md-menu-item>
                     </md-menu-content>
@@ -46,7 +46,7 @@
                         </md-layout>
                     </md-list-item>
                     <md-list-item class="md-inset">
-                        <md-layout md-flex="50">總花費</md-layout>
+                        <md-layout md-flex="50">{{ $t("record.total") }}</md-layout>
                         <md-layout md-flex="15">{{ $store.state.settings.currency }}</md-layout>
                         <md-layout md-flex="20">{{ sum }}</md-layout>
                         <md-layout md-flex="15">
@@ -58,7 +58,7 @@
                 </md-list>
 
                 <md-dialog md-open-from="#fab" md-close-to="#fab" ref="edit-row-dialog">
-                    <md-dialog-title>修改旅程標題</md-dialog-title>
+                    <md-dialog-title>{{ $t("record.edit_title") }}</md-dialog-title>
 
                     <md-dialog-content>
                         <form>
@@ -66,52 +66,52 @@
                                 <input type="date" v-model="date">
                             </md-input-container>
                             <md-input-container>
-                                <label>標題</label>
+                                <label>{{ $t("record.title") }}</label>
                                 <md-textarea v-model="title"></md-textarea>
                             </md-input-container>
                         </form>
                     </md-dialog-content>
 
                     <md-dialog-actions>
-                        <md-button class="md-primary" @click="closeDialog('edit-row-dialog')">關閉</md-button>
+                        <md-button class="md-primary" @click="closeDialog('edit-row-dialog')">{{ $t("record.close") }}</md-button>
                     </md-dialog-actions>
                 </md-dialog>
 
                 <md-dialog md-open-from="#fab" md-close-to="#fab" ref="add-dialog">
-                    <md-dialog-title>新增支出</md-dialog-title>
+                    <md-dialog-title>{{ $t("record.add_expense") }}</md-dialog-title>
 
                     <md-dialog-content>
                         <form>
                             <md-input-container>
-                                <label>消費</label>
+                                <label>{{ $t("record.add_expense") }}</label>
                                 <md-textarea v-model="newExpense.title"></md-textarea>
                             </md-input-container>
                             <md-input-container>
                                 <select v-model="newExpense.currency">
-                                    <option value="" disabled selected>幣別</option>
+                                    <option value="" disabled selected>{{ $t("record.currency") }}</option>
                                     <option v-for="(currency, index) in currencies.lists" :value="currency">{{ currency }}</option>
                                 </select>
                             </md-input-container>
                             <md-input-container>
-                                <label>金額</label>
+                                <label>{{ $t("record.amount") }}</label>
                                 <md-textarea v-model="newExpense.money"></md-textarea>
                             </md-input-container>
                         </form>
                     </md-dialog-content>
 
                     <md-dialog-actions>
-                        <md-button class="md-primary" @click="closeDialog('add-dialog')">取消</md-button>
-                        <md-button class="md-primary" @click="editOrAdd('add-dialog')">新增</md-button>
+                        <md-button class="md-primary" @click="closeDialog('add-dialog')">{{ $t("record.cancel") }}</md-button>
+                        <md-button class="md-primary" @click="editOrAdd('add-dialog')">{{ $t("record.add") }}</md-button>
                     </md-dialog-actions>
                 </md-dialog>
 
                 <md-dialog md-open-from="#fab" md-close-to="#fab" ref="edit-dialog">
-                    <md-dialog-title>更新支出</md-dialog-title>
+                    <md-dialog-title>{{ $t("record.edit_expense") }}</md-dialog-title>
 
                     <md-dialog-content>
                         <form>
                             <md-input-container>
-                                <label>消費</label>
+                                <label>{{ $t("record.expense") }}</label>
                                 <md-textarea v-model="editExpense.title"></md-textarea>
                             </md-input-container>
                             <md-input-container>
@@ -120,15 +120,15 @@
                                 </select>
                             </md-input-container>
                             <md-input-container>
-                                <label>金額</label>
+                                <label>{{ $t("record.amount") }}</label>
                                 <md-textarea v-model="editExpense.money"></md-textarea>
                             </md-input-container>
                         </form>
                     </md-dialog-content>
 
                     <md-dialog-actions>
-                        <md-button class="md-primary" @click="closeDialog('edit-dialog')">取消</md-button>
-                        <md-button class="md-primary" @click="editOrAdd('edit-dialog', editIndex)">修改</md-button>
+                        <md-button class="md-primary" @click="closeDialog('edit-dialog')">{{ $t("record.cancel") }}</md-button>
+                        <md-button class="md-primary" @click="editOrAdd('edit-dialog', editIndex)">{{ $t("record.edit") }}</md-button>
                     </md-dialog-actions>
                 </md-dialog>
             </md-card-content>

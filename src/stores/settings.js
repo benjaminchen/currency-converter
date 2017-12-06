@@ -1,7 +1,8 @@
 const settings = {
     namespaced: true,
     state: {
-        currency: ""
+        currency: "",
+        language: "",
     },
     mutations: {
         init: (state) => {
@@ -14,12 +15,16 @@ const settings = {
             }
 
             state.currency = (sets && sets.currency) ? sets.currency : "NTD"
+            state.language = (sets && sets.language) ? sets.language : "en"
         },
         clear: (state) => {
             window.localStorage.removeItem("TravelToolSettings")
         },
         setCurrency: (state, currency) => {
             state.currency = currency
+        },
+        setLanguage: (state, language) => {
+            state.language = language
         },
         save: (state) => {
             window.localStorage.setItem("TravelToolSettings", JSON.stringify(state))
@@ -28,6 +33,10 @@ const settings = {
     actions: {
         setCurrency(context, currency) {
             context.commit("setCurrency", currency)
+            context.commit("save")
+        },
+        setLanguage(context, language) {
+            context.commit("setLanguage", language)
             context.commit("save")
         }
     }

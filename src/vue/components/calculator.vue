@@ -53,9 +53,7 @@
             <md-dialog-content>
                 <md-list class="flag-list">
                     <md-list-item v-for="(currency, index) in currencies.lists" :key="index" @click="setDollar(currency, 'dialog1')">
-                        <md-button class="md-icon-button">
-                            <md-icon class="md-size-2x" v-bind:md-src="getFlag(currency)"></md-icon>
-                        </md-button>
+                        <md-icon class="md-size-2x" v-bind:md-src="getFlag(currency)"></md-icon>
                         <span>{{ currency }}</span>
                     </md-list-item>
                 </md-list>
@@ -68,6 +66,7 @@
     export default {
         mounted: function() {
             this.currencies = this.$store.state.currencies
+            this.fromDollar = this.$store.state.settings.currency
         },
         props: [
             'input'
