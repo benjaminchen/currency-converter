@@ -18,11 +18,12 @@ Vue.material.registerTheme('default', {
   primary: 'blue',
 })
 
-i18n.locale = store.state.settings.language
-
 const App = new Vue({
     beforeMount: function() {
       this.$store.commit("settings/init")
+    },
+    mounted: function() {
+      this.$i18n.locale = this.$store.state.settings.language
     },
     el: 'div.app',
     components: {
