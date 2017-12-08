@@ -32,12 +32,10 @@
 
     export default {
         created: function() {
+            let rows = window.localStorage.getItem("TravelToolRows")
+            if (rows) this.rows = JSON.parse(rows)
             this.newRow = Object.assign({}, this.nullRow)
             this.editRow = Object.assign({}, this.nullRow)
-        },
-        mounted: function() {
-            var rows = window.localStorage.getItem("TravelToolRows")
-            if (rows) this.rows = JSON.parse(rows)
         },
         components: {
             card
