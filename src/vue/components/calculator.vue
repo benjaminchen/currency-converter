@@ -67,6 +67,7 @@
         mounted: function() {
             this.currencies = this.$store.state.currencies
             this.fromDollar = this.$store.state.settings.currency
+            this.exchangeRate = this.currencies[this.fromDollar] / this.currencies[this.toDollar]
         },
         props: [
             'input'
@@ -76,7 +77,7 @@
                 currencies: [],
                 fromDollar: "NTD",
                 toDollar: "USD",
-                exchangeRate: 0.033,
+                exchangeRate: 0,
                 setTarget: null
             }
         },
